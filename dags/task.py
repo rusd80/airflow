@@ -24,9 +24,7 @@ def process_csv(file_path):
     from pyspark.sql.functions import col, avg
 
     # Initialize Spark session
-    spark = SparkSession.builder
-    .appName("CSV Processing")
-    .getOrCreate()
+    spark = SparkSession.builder.appName("CSV Processing").getOrCreate()
 
 
 # Read the CSV file into a DataFrame
