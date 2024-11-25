@@ -39,7 +39,7 @@ with DAG(
         }
 
 
-    @task(multiple_outputs=True)
+    @task()
     def download_csv():
         urllib.request.urlretrieve('https://drive.google.com/uc?id=13a2WyLoGxQKXbN_AIjrOogIlQKNe9uPm', "csv.csv")
 
