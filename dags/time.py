@@ -6,6 +6,8 @@ from airflow.operators.python import get_current_context
 from airflow.sensors.time_delta import TimeDeltaSensor
 from airflow.utils import timezone
 import urllib.request
+import os
+import logging
 
 with DAG(
         dag_id="test_dag",
@@ -43,5 +45,6 @@ with DAG(
         urllib.request.urlretrieve('https://drive.google.com/uc?id=13a2WyLoGxQKXbN_AIjrOogIlQKNe9uPm', "csv.csv")
         with open('csv.csv', 'r') as f:
             print(f.read())
+        logging.info(os.path.getsize("csv.csv"))
 
     (task1() >> sleep_task >> duration_task() >> download_csv())
