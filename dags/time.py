@@ -38,9 +38,10 @@ with DAG(
             "end_time": str(now)
         }
 
-
     @task()
     def download_csv():
         urllib.request.urlretrieve('https://drive.google.com/uc?id=13a2WyLoGxQKXbN_AIjrOogIlQKNe9uPm', "csv.csv")
+        with open('csv.csv', 'r') as f:
+            print(f.read())
 
     (task1() >> sleep_task >> duration_task() >> download_csv())
