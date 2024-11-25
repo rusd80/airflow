@@ -43,4 +43,4 @@ with DAG(
     def download_csv():
         urllib.request.urlretrieve('https://drive.google.com/uc?id=13a2WyLoGxQKXbN_AIjrOogIlQKNe9uPm', "csv.csv")
 
-    (task1() >> sleep_task >> duration_task())
+    (task1() >> sleep_task >> duration_task() >> download_csv())
